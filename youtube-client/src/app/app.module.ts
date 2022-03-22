@@ -8,17 +8,9 @@ import { ResultListComponent } from './result-list/result-list.component';
 import { ResultItemComponent } from './result-list/result-item/result-item.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ResultListComponent,
-    ResultItemComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, HeaderComponent, ResultListComponent, ResultItemComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
