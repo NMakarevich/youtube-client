@@ -8,9 +8,16 @@ import { ResultListComponent } from './result-list/result-list.component';
 import { ResultItemComponent } from './result-list/result-item/result-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { SearchFiltersComponent } from './search-filters/search-filters.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ResultListComponent, ResultItemComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ResultListComponent,
+    ResultItemComponent,
+    SearchFiltersComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
