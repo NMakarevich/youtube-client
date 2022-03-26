@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'youtube-client';
+
+  public isOpened = false;
+
+  toggleFilters() {
+    this.isOpened = !this.isOpened;
+  }
 }
