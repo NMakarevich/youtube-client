@@ -1,1 +1,25 @@
-<p>result-item works!</p>
+<mat-card class='card'>
+  <img class='card__image' mat-card-image [src]='result?.snippet?.thumbnails?.high?.url' [alt]='result?.snippet?.title'>
+  <ul class='description'>
+    <li class='description__item'>
+      <mat-icon class='description__icon'>visibility</mat-icon>
+      {{result?.statistics?.viewCount}}
+    </li>
+    <li class='description__item'>
+      <mat-icon class='description__icon'>favorite</mat-icon>
+      {{result?.statistics?.likeCount}}
+    </li>
+    <li class='description__item'>
+      <mat-icon class='description__icon dislike'>favorite</mat-icon>
+      {{result?.statistics?.dislikeCount}}
+    </li>
+    <li class='description__item'>
+      <mat-icon class='description__icon'>chat_bubble</mat-icon>
+      {{result?.statistics?.commentCount}}
+    </li>
+  </ul>
+  <mat-card-actions>
+    <button class='card__button' mat-raised-button color='primary'>more...</button>
+  </mat-card-actions>
+  <mat-card-footer></mat-card-footer>
+</mat-card>

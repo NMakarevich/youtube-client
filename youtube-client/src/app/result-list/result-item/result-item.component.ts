@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ResponseItem } from '../../interfaces/response-item';
 
 @Component({
@@ -7,5 +7,5 @@ import { ResponseItem } from '../../interfaces/response-item';
   styleUrls: ['./result-item.component.scss'],
 })
 export class ResultItemComponent {
-  public responseItem?: ResponseItem;
+  @Input() result?: ResponseItem;
 }
