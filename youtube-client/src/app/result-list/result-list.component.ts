@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ResponseItem } from '../interfaces/response-item';
 
 @Component({
@@ -7,5 +7,5 @@ import { ResponseItem } from '../interfaces/response-item';
   styleUrls: ['./result-list.component.scss'],
 })
 export class ResultListComponent {
-  public results: ResponseItem[] = [];
+  @Input() results: ResponseItem[] = [];
 }
