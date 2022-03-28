@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { YoutubeResponse } from './interfaces/youtube-response';
+import response from './mock/response';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'youtube-client';
 
-  public isOpened = false;
+  public filterState!: boolean;
 
-  toggleFilters() {
-    this.isOpened = !this.isOpened;
-  }
+  public response: YoutubeResponse = response;
+
+  public responseItems = response.items;
 }

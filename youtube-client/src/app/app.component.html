@@ -1,2 +1,3 @@
-<app-header (toggleExpansion)='toggleFilters()'></app-header>
-<app-search-filters [isOpened]='isOpened'></app-search-filters>
+<app-header [(isOpened)]='filterState'></app-header>
+<app-search-filters [isOpened]='filterState'></app-search-filters>
+<app-result-list *ngIf='response' [results]='responseItems'></app-result-list>

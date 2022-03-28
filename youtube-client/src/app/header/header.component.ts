@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +6,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() toggleExpansion = new EventEmitter<void>();
+  @Input() isOpened: boolean = false;
+
+  @Output() isOpenedChange = new EventEmitter<boolean>();
 
   public userName = 'User Name';
+
+  toggle() {
+    this.isOpened = !this.isOpened;
+    this.isOpenedChange.emit(this.isOpened);
+  }
 }
