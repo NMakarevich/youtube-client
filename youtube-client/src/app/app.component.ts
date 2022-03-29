@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { YoutubeResponse } from './interfaces/youtube-response';
-import response from './mock/response';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +10,9 @@ export class AppComponent {
 
   public filterState!: boolean;
 
-  public response: YoutubeResponse = response;
+  public searchTerm = '';
 
-  public responseItems = response.items;
+  getSearchTerm(item: string) {
+    this.searchTerm = item;
+  }
 }
