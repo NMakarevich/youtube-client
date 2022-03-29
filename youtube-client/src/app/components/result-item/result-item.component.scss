@@ -1,6 +1,6 @@
 $bgColor: #E5E5E5;
 
-.card {
+.mat-card {
   padding-left: 0;
   padding-right: 0;
   display: flex;
@@ -16,11 +16,21 @@ $bgColor: #E5E5E5;
 .mat-card-image {
   margin: 0;
   padding: 10px;
-  width: 100%;
+  width: 90%;
+}
+
+.mat-card-title {
+  padding: 0 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.mat-card-actions {
+  margin-top: auto;
 }
 
 .description {
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 0;
   display: flex;
   gap: 17px;
