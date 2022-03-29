@@ -1,4 +1,4 @@
-<mat-card class='card'>
+<mat-card class='card' [appColorizeBorder]='result?.snippet?.publishedAt'>
   <img class='card__image' mat-card-image [src]='result?.snippet?.thumbnails?.high?.url' [alt]='result?.snippet?.title'>
   <ul class='description'>
     <li class='description__item'>
@@ -18,8 +18,8 @@
       {{result?.statistics?.commentCount}}
     </li>
   </ul>
+  <mat-card-title>{{result?.snippet?.title}}</mat-card-title>
   <mat-card-actions>
     <button class='card__button' mat-raised-button color='primary'>more...</button>
   </mat-card-actions>
-  <mat-card-footer></mat-card-footer>
 </mat-card>
