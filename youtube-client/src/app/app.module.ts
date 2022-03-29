@@ -9,6 +9,7 @@ import { ResultItemComponent } from './result-list/result-item/result-item.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { SearchFiltersComponent } from './search-filters/search-filters.component';
+import { ColorizeBorderDirective } from './result-list/result-item/colorize-border.directive';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SearchFiltersComponent } from './search-filters/search-filters.componen
     ResultListComponent,
     ResultItemComponent,
     SearchFiltersComponent,
+    ColorizeBorderDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule],
   providers: [],
