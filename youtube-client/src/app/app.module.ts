@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { SearchFiltersComponent } from './search-filters/search-filters.component';
 import { ColorizeBorderDirective } from './result-list/result-item/colorize-border.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ColorizeBorderDirective } from './result-list/result-item/colorize-bord
     SearchFiltersComponent,
     ColorizeBorderDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
