@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { ResponseItem } from '../interfaces/response-item';
-import response from '../mock/response';
+import { ResponseItem } from '../../interfaces/response-item';
+import response from '../../mock/response';
 
 @Component({
   selector: 'app-result-list',
