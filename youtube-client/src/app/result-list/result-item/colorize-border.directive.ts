@@ -21,7 +21,6 @@ export class ColorizeBorderDirective implements OnInit {
 
     const days = Math.floor((now.getTime() - date.getTime()) / 1000 / 60 / 60 / 24);
 
-    console.log(days);
     let color =
       days > 180
         ? Colors.moreSixMonth
