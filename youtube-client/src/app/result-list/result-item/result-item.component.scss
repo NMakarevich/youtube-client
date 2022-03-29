@@ -10,19 +10,13 @@ $bgColor: #E5E5E5;
   margin-bottom: 29px;
   box-sizing: border-box;
   background-color: $bgColor;
+  border-bottom: 5px solid #F2C94C;
 }
 
 .mat-card-image {
   margin: 0;
   padding: 10px;
   width: 100%;
-}
-
-.mat-card-footer {
-  width: 100%;
-  height: 5px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
 }
 
 .description {
