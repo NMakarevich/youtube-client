@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { SearchFiltersComponent } from './components/search-filters/search-filters.component';
 import { ColorizeBorderDirective } from './directives/colorize-border/colorize-border.directive';
 import { FormsModule } from '@angular/forms';
+import { SortingPipe } from './pipes/sorting/sorting.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     ResultItemComponent,
     SearchFiltersComponent,
     ColorizeBorderDirective,
+    SortingPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, FormsModule],
   providers: [],

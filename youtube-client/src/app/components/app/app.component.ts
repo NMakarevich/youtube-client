@@ -12,7 +12,13 @@ export class AppComponent {
 
   public searchTerm = '';
 
+  public sortTerm = '';
+
   getSearchTerm(item: string) {
     this.searchTerm = item;
+  }
+
+  getSortTerm(item: string) {
+    this.sortTerm = item;
   }
 }
