@@ -13,6 +13,8 @@ export class SearchFiltersComponent implements OnChanges {
 
   @Output() sorting = new EventEmitter<string>();
 
+  @Output() filtering = new EventEmitter<Event>();
+
   public sortingBy: string = '';
 
   public date: boolean = false;

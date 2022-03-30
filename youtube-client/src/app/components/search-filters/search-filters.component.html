@@ -7,7 +7,7 @@
       <li class='filter'>
         <span>by word or sentence</span>
         <mat-form-field>
-          <input matInput type='text'>
+          <input matInput type='text' (input)='filtering.emit($event)'>
         </mat-form-field>
       </li>
     </ul>

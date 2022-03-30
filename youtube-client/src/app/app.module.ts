@@ -11,6 +11,7 @@ import { SearchFiltersComponent } from './components/search-filters/search-filte
 import { ColorizeBorderDirective } from './directives/colorize-border/colorize-border.directive';
 import { FormsModule } from '@angular/forms';
 import { SortingPipe } from './pipes/sorting/sorting.pipe';
+import { FilteringPipe } from './pipes/filtering/filtering.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SortingPipe } from './pipes/sorting/sorting.pipe';
     SearchFiltersComponent,
     ColorizeBorderDirective,
     SortingPipe,
+    FilteringPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, FormsModule],
   providers: [],
