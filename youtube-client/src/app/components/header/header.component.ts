@@ -22,7 +22,6 @@ export class HeaderComponent {
   }
 
   searchVideos() {
-    console.log(this.searchTerm);
     if (this.searchTerm) this.search.emit(this.searchTerm);
   }
 }
