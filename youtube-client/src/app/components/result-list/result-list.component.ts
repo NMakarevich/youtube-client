@@ -14,6 +14,8 @@ export class ResultListComponent implements OnChanges {
 
   @Input() sortTerm: string = '';
 
+  @Input() filterTerm: string = '';
+
   ngOnChanges() {
     if (this.searchTerm) this.results = response.items;
   }
