@@ -8,11 +8,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class HeaderComponent {
   @Input() isOpened: boolean = false;
 
-  public searchTerm: string = '';
-
   @Output() isOpenedChange = new EventEmitter<boolean>();
 
   @Output() search = new EventEmitter<string>();
+
+  public searchTerm: string = '';
 
   public userName = 'User Name';
 
