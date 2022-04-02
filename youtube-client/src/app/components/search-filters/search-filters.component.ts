@@ -33,7 +33,7 @@ export class SearchFiltersComponent implements OnChanges {
 
   ngOnChanges() {
     if (!this.expansionPanel) return;
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !this.isOpened ? this.expansionPanel.close() : this.expansionPanel.open();
+    if (!this.isOpened) this.expansionPanel.close();
+    else this.expansionPanel.open();
   }
 }

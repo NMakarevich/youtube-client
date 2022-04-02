@@ -6,7 +6,7 @@ import { ResponseItem } from '../../interfaces/response-item';
 })
 export class FilteringPipe implements PipeTransform {
   transform(results: ResponseItem[], filterTerm: string): ResponseItem[] {
-    if (!results || !filterTerm) return results;
+    if (!results || !results.length || !filterTerm) return results;
 
     return results.filter((result) =>
       result?.snippet?.title.toLowerCase().includes(filterTerm.toLowerCase()),
