@@ -1,0 +1,9 @@
+<app-header (search)='getSearchTerm($event)'></app-header>
+<app-search-filters [isOpened]='youtubeService.filterState'
+                    (sorting)='getSortTerm($event)'
+                    (filtering)='getFilterTerm($event)'
+></app-search-filters>
+<app-result-list [searchTerm]='youtubeService.searchTerm'
+                 [sortTerm]='youtubeService.sortTerm'
+                 [filterTerm]='youtubeService.filterTerm'
+></app-result-list>
