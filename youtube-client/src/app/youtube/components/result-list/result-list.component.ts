@@ -1,6 +1,5 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ResponseItem } from '../../../shared/models/response-item';
-import response from '../../../shared/mock/response';
 import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { YoutubeService } from '../../services/youtube.service';
   templateUrl: './result-list.component.html',
   styleUrls: ['./result-list.component.scss'],
 })
-export class ResultListComponent implements OnChanges {
+export class ResultListComponent {
   @Input() results: ResponseItem[] = [];
 
   @Input() searchTerm: string = '';
@@ -17,10 +16,5 @@ export class ResultListComponent implements OnChanges {
 
   @Input() filterTerm: string = '';
 
-  constructor(public youtubeService: YoutubeService) {
-  }
-
-  ngOnChanges() {
-    if (this.youtubeService.searchTerm) this.results = response.items;
-  }
+  constructor(public youtubeService: YoutubeService) {}
 }

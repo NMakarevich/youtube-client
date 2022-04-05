@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatExpansionPanel } from '@angular/material/expansion';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-search-filters',
   templateUrl: './search-filters.component.html',
   styleUrls: ['./search-filters.component.scss'],
 })
-export class SearchFiltersComponent implements OnChanges {
+export class SearchFiltersComponent implements AfterViewInit {
   @Input() isOpened!: boolean;
 
   @ViewChild(MatExpansionPanel) expansionPanel!: MatExpansionPanel;
@@ -29,9 +30,9 @@ export class SearchFiltersComponent implements OnChanges {
     this.sorting.emit(`views-${this.views ? 'up' : 'down'}`);
   }
 
-  ngOnChanges() {
-    if (!this.expansionPanel) return;
-    if (!this.isOpened) this.expansionPanel.close();
-    else this.expansionPanel.open();
+  constructor(public youtubeService: YoutubeService) {}
+
+  ngAfterViewInit() {
+    this.youtubeService.expansionPanel = this.expansionPanel;
   }
 }

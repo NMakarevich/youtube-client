@@ -6,11 +6,12 @@
     <div class='search'>
       <mat-form-field class='search__field'>
         <mat-label class='search__field-label'>What are you want to find out?</mat-label>
-        <input matInput type='text' [(ngModel)]='searchTerm'>
+        <input matInput type='text' [(ngModel)]='youtubeService.searchTerm'>
       </mat-form-field>
-      <button mat-raised-button color='primary' class='search__button' (click)='searchVideos()'>Search</button>
+      <button mat-raised-button color='primary' class='search__button' (click)='youtubeService.searchVideos()'>Search
+      </button>
     </div>
-    <button mat-raised-button color='primary' class='filter__button' (click)='toggle()'>
+    <button mat-raised-button color='primary' class='filter__button' (click)='this.youtubeService.toggleFilterState()'>
       <mat-icon class='filter__button-icon'>tune</mat-icon>
     </button>
     <div class='login'>
