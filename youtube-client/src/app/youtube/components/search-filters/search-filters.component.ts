@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { YoutubeService } from '../../services/youtube.service';
 
@@ -8,8 +8,6 @@ import { YoutubeService } from '../../services/youtube.service';
   styleUrls: ['./search-filters.component.scss'],
 })
 export class SearchFiltersComponent implements AfterViewInit {
-  @Input() isOpened!: boolean;
-
   @ViewChild(MatExpansionPanel) expansionPanel!: MatExpansionPanel;
 
   @Output() sorting = new EventEmitter<string>();
