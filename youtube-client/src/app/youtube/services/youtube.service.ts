@@ -18,6 +18,7 @@ export class YoutubeService {
   public response: ResponseItem[] = [];
 
   toggleFilterState() {
+    if (!this.expansionPanel) return;
     this.filterState = !this.filterState;
     if (this.filterState) this.expansionPanel.open();
     else this.expansionPanel.close();
