@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorizeBorderDirective } from './colorize-border/colorize-border.directive';
-
-
+import { ColorizeDirective } from './colorize/colorize.directive';
 
 @NgModule({
-  declarations: [ColorizeBorderDirective],
-  imports: [
-    CommonModule
-  ],
-  exports: [ColorizeBorderDirective]
+  declarations: [ColorizeDirective],
+  imports: [CommonModule],
+  exports: [ColorizeDirective],
 })
-export class DirectivesModule { }
+export class DirectivesModule {}

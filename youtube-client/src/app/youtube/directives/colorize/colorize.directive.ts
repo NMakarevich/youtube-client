@@ -2,10 +2,12 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { Colors } from '../../../consts';
 
 @Directive({
-  selector: '[appColorizeBorder]',
+  selector: '[appColorize]',
 })
-export class ColorizeBorderDirective implements OnInit {
-  @Input('appColorizeBorder') publishedDate?: string;
+export class ColorizeDirective implements OnInit {
+  @Input() publishedDate?: string;
+
+  @Input() style?: string;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
@@ -24,6 +26,6 @@ export class ColorizeBorderDirective implements OnInit {
           : Colors.lessMonth
         : Colors.default;
 
-    this.renderer.setStyle(this.elementRef.nativeElement, 'border-color', color);
+    this.renderer.setStyle(this.elementRef.nativeElement, this.style as string, color);
   }
 }
