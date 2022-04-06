@@ -1,4 +1,4 @@
-<mat-card class='card' [appColorizeBorder]='result?.snippet?.publishedAt'>
+<mat-card class='card' appColorize [publishedDate]='result?.snippet?.publishedAt' [style]='"border-color"'>
   <img class='card__image' mat-card-image [src]='result?.snippet?.thumbnails?.high?.url' [alt]='result?.snippet?.title'>
   <ul class='description'>
     <li class='description__item'>
