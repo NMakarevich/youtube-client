@@ -41,6 +41,7 @@ export class YoutubeService {
   }
 
   searchVideos() {
+    if (this.router.url !== '/search') return;
     if (this.searchTerm) this.response = response.items;
   }
 
