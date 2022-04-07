@@ -6,15 +6,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
-import { YoutubeModule } from './youtube/youtube.module';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    FormsModule,
+    CoreModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, FormsModule, CoreModule, YoutubeModule, AuthModule],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

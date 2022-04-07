@@ -4,15 +4,9 @@ import { SharedModule } from '../../../shared/shared.module';
 import { HeaderComponent } from './header.component';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [HeaderComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule
-  ],
-  exports: [HeaderComponent]
+  imports: [CommonModule, SharedModule, FormsModule],
+  exports: [HeaderComponent],
 })
-export class HeaderModule { }
+export class HeaderModule {}
