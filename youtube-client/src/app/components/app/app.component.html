@@ -1,0 +1,9 @@
+<app-header [(isOpened)]='filterState' (search)='getSearchTerm($event)'></app-header>
+<app-search-filters [isOpened]='filterState'
+                    (sorting)='getSortTerm($event)'
+                    (filtering)='getFilterTerm($event)'
+></app-search-filters>
+<app-result-list [searchTerm]='searchTerm'
+                 [sortTerm]='sortTerm'
+                 [filterTerm]='filterTerm'
+></app-result-list>
