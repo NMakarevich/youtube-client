@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatExpansionPanel } from '@angular/material/expansion';
 import { ResponseItem } from '../../shared/models/response-item';
 import response from '../../shared/mock/response';
 import { Router } from '@angular/router';
@@ -8,11 +7,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class YoutubeService {
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   public filterState = false;
-
-  public expansionPanel!: MatExpansionPanel;
 
   public searchTerm = '';
 
@@ -25,17 +22,14 @@ export class YoutubeService {
   public response: ResponseItem[] = [];
 
   toggleFilterState() {
-    if (!this.expansionPanel) return;
     this.filterState = !this.filterState;
-    if (this.filterState) this.expansionPanel.open();
-    else this.expansionPanel.close();
   }
 
-  getSortTerm(item: string) {
+  setSortTerm(item: string) {
     this.sortTerm = item;
   }
 
-  getFilterTerm(event: Event) {
+  setFilterTerm(event: Event) {
     const target = event.target as HTMLInputElement;
     this.filterTerm = target.value;
   }
@@ -51,7 +45,7 @@ export class YoutubeService {
   }
 
   logout() {
-    localStorage.setItem('authorisation', '');
+    localStorage.removeItem('authorization');
     this.router.navigate(['auth']);
   }
 }

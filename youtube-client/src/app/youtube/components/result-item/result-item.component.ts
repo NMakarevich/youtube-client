@@ -10,5 +10,9 @@ import { YoutubeService } from '../../services/youtube.service';
 export class ResultItemComponent {
   @Input() result?: ResponseItem;
 
-  constructor(public youtubeService: YoutubeService) {}
+  constructor(private readonly youtubeService: YoutubeService) {}
+
+  showInfo(id: string) {
+    this.youtubeService.showInfo(id);
+  }
 }

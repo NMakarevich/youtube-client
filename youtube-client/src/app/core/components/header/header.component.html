@@ -6,12 +6,12 @@
     <div class='search'>
       <mat-form-field class='search__field'>
         <mat-label class='search__field-label'>What are you want to find out?</mat-label>
-        <input matInput type='text' [(ngModel)]='youtubeService.searchTerm'>
+        <input matInput type='text' [(ngModel)]='searchTerm'>
       </mat-form-field>
-      <button mat-raised-button color='primary' class='search__button' (click)='youtubeService.searchVideos()'>Search
+      <button mat-raised-button color='primary' class='search__button' (click)='searchVideos()'>Search
       </button>
     </div>
-    <button mat-raised-button color='primary' class='filter__button' (click)='this.youtubeService.toggleFilterState()'>
+    <button mat-raised-button color='primary' class='filter__button' (click)='toggleFilterState()'>
       <mat-icon class='filter__button-icon'>tune</mat-icon>
     </button>
     <div class='login'>
@@ -19,7 +19,7 @@
       <div class='login__avatar'>
         <mat-icon class='login__icon'>account_circle</mat-icon>
       </div>
-      <div class='logout__button' (click)='youtubeService.logout()'>
+      <div class='logout__button' (click)='logout()'>
         <mat-icon class='login__icon'>exit_to_app</mat-icon>
       </div>
     </div>
