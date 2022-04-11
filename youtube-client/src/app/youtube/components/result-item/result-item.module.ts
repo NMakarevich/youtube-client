@@ -4,15 +4,9 @@ import { ResultItemComponent } from './result-item.component';
 import { DirectivesModule } from '../../directives/directives.module';
 import { SharedModule } from '../../../shared/shared.module';
 
-
-
 @NgModule({
   declarations: [ResultItemComponent],
-  imports: [
-    CommonModule,
-    DirectivesModule,
-    SharedModule
-  ],
-  exports: [ResultItemComponent]
+  imports: [CommonModule, DirectivesModule, SharedModule],
+  exports: [ResultItemComponent],
 })
-export class ResultItemModule { }
+export class ResultItemModule {}

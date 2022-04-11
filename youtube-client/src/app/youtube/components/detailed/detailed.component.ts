@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class DetailedComponent {
   @Input() result?: ResponseItem;
 
-  constructor(public youtubeService: YoutubeService, private router: Router) {}
+  constructor(private readonly youtubeService: YoutubeService, private readonly router: Router) {}
 
   goBack() {
     this.router.navigate(['..']);

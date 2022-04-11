@@ -9,5 +9,20 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
 export class HeaderComponent {
   public userName = 'User Name';
 
-  constructor(public youtubeService: YoutubeService) {}
+  public searchTerm = '';
+
+  constructor(private readonly youtubeService: YoutubeService) {}
+
+  searchVideos() {
+    this.youtubeService.searchTerm = this.searchTerm;
+    this.youtubeService.searchVideos();
+  }
+
+  toggleFilterState() {
+    this.youtubeService.toggleFilterState();
+  }
+
+  logout() {
+    this.youtubeService.logout();
+  }
 }

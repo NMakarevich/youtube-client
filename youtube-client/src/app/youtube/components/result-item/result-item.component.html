@@ -20,7 +20,7 @@
   </ul>
   <mat-card-title>{{result?.snippet?.title}}</mat-card-title>
   <mat-card-actions>
-    <button class='card__button' mat-raised-button color='primary' (click)='youtubeService.showInfo(result?.id)'>
+    <button class='card__button' mat-raised-button color='primary' (click)='showInfo(result!.id)'>
       more...
     </button>
   </mat-card-actions>

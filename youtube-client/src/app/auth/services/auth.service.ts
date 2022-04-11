@@ -5,11 +5,10 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   login() {
-    const authObj: { isAutorized: boolean } = { isAutorized: true };
-    localStorage.setItem('authorisation', JSON.stringify(authObj));
+    localStorage.setItem('authorization', 'true');
     this.router.navigate(['search']);
   }
 }
