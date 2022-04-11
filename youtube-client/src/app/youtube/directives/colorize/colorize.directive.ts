@@ -7,7 +7,7 @@ import { Colors } from '../../../consts';
 export class ColorizeDirective implements OnInit {
   @Input() publishedDate?: string;
 
-  @Input() style?: string;
+  @Input() style!: string;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
@@ -26,6 +26,6 @@ export class ColorizeDirective implements OnInit {
           : Colors.lessMonth
         : Colors.default;
 
-    this.renderer.setStyle(this.elementRef.nativeElement, this.style as string, color);
+    this.renderer.setStyle(this.elementRef.nativeElement, this.style, color);
   }
 }
