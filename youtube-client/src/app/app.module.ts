@@ -1,22 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared.module';
-import { FormsModule } from '@angular/forms';
-import { CoreModule } from './core/core.module';
+import { HeaderComponent } from './header/header.component';
+import { ResultListComponent } from './result-list/result-list.component';
+import { ResultItemComponent } from './result-list/result-item/result-item.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    FormsModule,
-    CoreModule,
-  ],
+  declarations: [AppComponent, HeaderComponent, ResultListComponent, ResultItemComponent],
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
