@@ -1,0 +1,4 @@
+<div class='container'>
+  <app-result-item *ngFor='let result of results | sorting : sortTerm | filtering: filterTerm'
+                   [result]='result'></app-result-item>
+</div>

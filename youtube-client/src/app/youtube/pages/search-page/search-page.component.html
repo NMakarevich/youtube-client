@@ -1,0 +1,9 @@
+<app-search-filters (sorting)='setSortTerm($event)'
+                    (filtering)='setFilterTerm($event)'
+                    [filterState]='getFilterState()'
+></app-search-filters>
+<app-result-list [searchTerm]='getSearchTerm()'
+                 [results]='getResponse()'
+                 [sortTerm]='getSortTerm()'
+                 [filterTerm]='getFilterTerm()'
+></app-result-list>
