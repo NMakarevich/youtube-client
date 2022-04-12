@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { ResponseItem } from '../../shared/models/response-item';
-import response from '../../shared/mock/response';
 import { Router } from '@angular/router';
+import { ApiService } from '../../core/services/api.service';
+import { ResponseItemById } from '../../shared/models/response-item-by-id';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
-  constructor(private readonly router: Router) {}
+  constructor(private readonly router: Router, private readonly apiService: ApiService) {}
 
   public filterState = false;
-
-  public searchTerm = '';
 
   public sortTerm = '';
 
   public filterTerm = '';
 
-  public selectedResult?: ResponseItem;
+  public id!: Array<string>;
 
-  public response: ResponseItem[] = [];
+  public selectedResult?: ResponseItemById;
+
+  public response$: ResponseItemById[] = [];
 
   toggleFilterState() {
+    if (!this.response$.length) return;
     this.filterState = !this.filterState;
   }
 
@@ -34,13 +36,18 @@ export class YoutubeService {
     this.filterTerm = target.value;
   }
 
-  searchVideos() {
+  searchVideosId(searchTerm: string) {
     if (this.router.url !== '/search') return;
-    if (this.searchTerm) this.response = response.items;
+    this.apiService.getVideosId(searchTerm).subscribe((val) => {
+      const id = val.items.map((item) => (item as ResponseItem).id.videoId);
+      this.apiService
+        .getVideosById(id)
+        .subscribe((result) => (this.response$ = result.items as ResponseItemById[]));
+    });
   }
 
-  showInfo(id: string | undefined) {
-    this.selectedResult = this.response.find((item) => item.id === (id as string));
+  showInfo(id: string) {
+    this.selectedResult = this.response$.find((item) => item.id === id);
     this.router.navigate(['search', id as string]);
   }
 

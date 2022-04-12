@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ResponseItem } from '../../../shared/models/response-item';
 import { YoutubeService } from '../../services/youtube.service';
+import { ResponseItemById } from '../../../shared/models/response-item-by-id';
 
 @Component({
   selector: 'app-result-item',
@@ -8,7 +8,7 @@ import { YoutubeService } from '../../services/youtube.service';
   styleUrls: ['./result-item.component.scss'],
 })
 export class ResultItemComponent {
-  @Input() result?: ResponseItem;
+  @Input() result?: ResponseItemById;
 
   constructor(private readonly youtubeService: YoutubeService) {}
 
