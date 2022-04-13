@@ -47,7 +47,6 @@ export class YoutubeService {
   }
 
   showInfo(id: string) {
-    this.selectedResult = this.response$.find((item) => item.id === id);
     this.router.navigate(['search', id as string]);
   }
 
