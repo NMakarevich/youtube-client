@@ -20,6 +20,11 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./core/core.module').then((m) => m.CoreModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },

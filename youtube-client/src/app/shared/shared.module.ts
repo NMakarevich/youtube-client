@@ -14,11 +14,11 @@ const materialModules = [
   MatButtonModule,
   MatExpansionModule,
   MatCardModule,
-]
+];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ...materialModules, ],
+  imports: [CommonModule, ...materialModules],
   exports: [...materialModules],
 })
 export class SharedModule {}
