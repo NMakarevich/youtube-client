@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public subject = new ReplaySubject<boolean>(1);
+  public subject = new BehaviorSubject<boolean>(false);
 
   constructor(private readonly router: Router) {
     const auth = localStorage.getItem('authorization');
     if (auth) this.subject.next(true);
-    else this.subject.next(false);
+  }
+
+  getAuth() {
+    return this.subject.pipe(map((isAuth) => ({ isAuth })));
   }
 
   login() {
     localStorage.setItem('authorization', 'true');
-    this.router.navigate(['search']);
     this.subject.next(true);
+    this.router.navigate(['search']);
   }
 }

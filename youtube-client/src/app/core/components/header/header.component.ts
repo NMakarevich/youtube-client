@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 import { debounceTime, filter, fromEvent, map } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
@@ -8,10 +8,8 @@ import { AuthService } from '../../../auth/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements AfterViewInit {
   public userName = 'User Name';
-
-  public auth!: boolean;
 
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
 
@@ -19,10 +17,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private readonly youtubeService: YoutubeService,
     private readonly authService: AuthService,
   ) {}
-
-  ngOnInit() {
-    this.authService.subject.subscribe((value) => (this.auth = value));
-  }
 
   ngAfterViewInit() {
     fromEvent(this.searchInput.nativeElement, 'input')
@@ -41,9 +35,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.youtubeService.toggleFilterState();
   }
 
+  getAuth() {
+    return this.authService.getAuth();
+  }
+
   logout() {
     this.youtubeService.logout();
     this.authService.subject.next(false);
-    this.authService.subject.subscribe((value) => (this.auth = value));
   }
 }

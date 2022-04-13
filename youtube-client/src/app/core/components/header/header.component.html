@@ -14,14 +14,14 @@
     </button>
     <div class='login'>
       <span>{{ userName }}</span>
-      <div class='logout__button' (click)='logout()' *ngIf='auth; else elseBtn'>
-        <mat-icon class='login__icon'>exit_to_app</mat-icon>
-      </div>
-      <ng-template #elseBtn>
-        <div class='login__avatar'>
+      <div *ngIf='getAuth() | async as getAuth'>
+        <div class='login__avatar' *ngIf='!getAuth.isAuth'>
           <mat-icon class='login__icon'>account_circle</mat-icon>
         </div>
-      </ng-template>
+        <div class='logout__button' (click)='logout()' *ngIf='getAuth.isAuth'>
+          <mat-icon class='login__icon'>exit_to_app</mat-icon>
+        </div>
+      </div>
     </div>
   </div>
 </mat-toolbar>
