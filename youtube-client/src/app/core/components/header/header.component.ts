@@ -40,7 +40,6 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   logout() {
-    this.youtubeService.logout();
-    this.authService.subject.next(false);
+    this.authService.logout();
   }
 }

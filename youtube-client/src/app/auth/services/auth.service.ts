@@ -6,20 +6,26 @@ import { BehaviorSubject, map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  public subject = new BehaviorSubject<boolean>(false);
+  public isAuth$ = new BehaviorSubject<boolean>(false);
 
   constructor(private readonly router: Router) {
     const auth = localStorage.getItem('authorization');
-    if (auth) this.subject.next(true);
+    if (auth) this.isAuth$.next(true);
   }
 
   getAuth() {
-    return this.subject.pipe(map((isAuth) => ({ isAuth })));
+    return this.isAuth$.pipe(map((isAuth) => ({ isAuth })));
   }
 
   login() {
     localStorage.setItem('authorization', 'true');
-    this.subject.next(true);
+    this.isAuth$.next(true);
     this.router.navigate(['search']);
+  }
+
+  logout() {
+    localStorage.removeItem('authorization');
+    this.isAuth$.next(false);
+    this.router.navigate(['auth']);
   }
 }

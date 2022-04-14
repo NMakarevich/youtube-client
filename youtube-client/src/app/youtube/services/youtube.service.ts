@@ -49,9 +49,4 @@ export class YoutubeService {
   showInfo(id: string) {
     this.router.navigate(['search', id as string]);
   }
-
-  logout() {
-    localStorage.removeItem('authorization');
-    this.router.navigate(['auth']);
-  }
 }
