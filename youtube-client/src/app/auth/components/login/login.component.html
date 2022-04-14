@@ -1,13 +1,21 @@
 <div class='login'>
   <h2 class='login__title'>Login</h2>
-  <form class='form' [formGroup]='loginForm' (submit)='login()'>
+  <form class='form' [formGroup]='loginForm' (submit)='loginForm.valid && login()'>
     <mat-form-field>
       <mat-label>Login</mat-label>
-      <input class='form__login' matInput type='email' formControlName='login'>
+      <input class='form__login' matInput type='email' formControlName='email' id='email'>
+      <div class='form__validation' *ngIf='email?.invalid && (email?.dirty || email?.touched)'>
+        "The login email is invalid"
+      </div>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
       <input class='form__password' matInput type='password' formControlName='password'>
+      <div class='form__validation' *ngIf='password?.invalid && (password?.dirty || password?.touched)'>
+        <div *ngIf='password?.errors?.["passwordValidator"]'>
+          {{password?.errors?.["passwordValidator"]}}
+        </div>
+      </div>
     </mat-form-field>
     <button class='form__submit' mat-raised-button color='primary' type='button' (click)='login()'>Login
     </button>

@@ -9,8 +9,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class CreateCardComponent implements OnInit {
   public formCard!: FormGroup;
 
-  public date!: AbstractControl;
-
   constructor(private readonly fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -29,13 +27,33 @@ export class CreateCardComponent implements OnInit {
       new URL(control.value);
     } catch (e) {}
     isValid = true;
-    return isValid ? null : { invalid: 'The link is invalid' };
+    return isValid ? null : { invalidLink: 'The link is invalid' };
   }
 
   validateDate(control: AbstractControl) {
     const enteredDate = new Date(control.value);
     const now = new Date();
-    return now.getTime() > enteredDate.getTime() ? null : { invalid: 'choose later date' };
+    return now.getTime() > enteredDate.getTime() ? null : { invalidDate: 'The date is invalid' };
+  }
+
+  get title() {
+    return this.formCard.get('title');
+  }
+
+  get description() {
+    return this.formCard.get('description');
+  }
+
+  get img() {
+    return this.formCard.get('img');
+  }
+
+  get video() {
+    return this.formCard.get('video');
+  }
+
+  get date() {
+    return this.formCard.get('date');
   }
 
   createCard() {

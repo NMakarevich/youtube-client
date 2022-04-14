@@ -20,6 +20,17 @@ $bgColor: #F2F2F2;
   display: flex;
   flex-direction: column;
 
+  &__validation {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    bottom: -38px;
+    z-index: 10;
+  }
+
   &__submit {
     width: 124px;
     align-self: flex-end;

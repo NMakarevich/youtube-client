@@ -14,14 +14,22 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      login: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
       password: ['', [Validators.required, this.passwordValidator]],
     });
   }
 
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   passwordValidator(control: AbstractControl) {
     const regExp = /(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!@#$%^&*]{8,}/g;
-    return regExp.test(control.value) ? null : { invalid: 'password is invalid' };
+    return regExp.test(control.value) ? null : { passwordValidator: 'Password is invalid' };
   }
 
   login() {
