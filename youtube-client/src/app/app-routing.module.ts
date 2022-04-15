@@ -22,11 +22,15 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./core/core.module').then((m) => m.CoreModule),
-    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+  },
+  {
+    path: '404',
+    component: NotFoundPageComponent,
   },
   {
     path: '**',
-    component: NotFoundPageComponent,
+    redirectTo: '404',
   },
 ];
 
