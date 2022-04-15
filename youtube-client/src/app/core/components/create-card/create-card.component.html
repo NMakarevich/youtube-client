@@ -5,21 +5,34 @@
       <mat-label>Title</mat-label>
       <input class='form__field' matInput type='text' formControlName='title'>
       <div class='form__validation' *ngIf='title?.invalid && (title?.dirty || title?.touched)'>
-        "The login email is invalid"
+        <div *ngIf="title?.errors?.['required']">
+          Please enter a title
+        </div>
+        <div *ngIf="title?.errors?.['minLength']">
+          The title is too short
+        </div>
+        <div *ngIf="title?.errors?.['maxLength']">
+          The title is too long
+        </div>
       </div>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Description</mat-label>
       <input class='form__field' matInput type='text' formControlName='description'>
       <div class='form__validation' *ngIf='description?.invalid && (description?.dirty || description?.touched)'>
-        <span>The description is too long</span>
+        The description is too long
       </div>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Image</mat-label>
       <input class='form__field' matInput type='text' formControlName='img'>
       <div class='form__validation' *ngIf='img?.invalid && (img?.dirty || img?.touched)'>
-        {{img?.errors?.["invalidLink"]}}
+        <div *ngIf="img?.errors?.['required']">
+          Please enter a link to the image
+        </div>
+        <div *ngIf="img?.errors?.['validateURL']">
+          {{img?.errors?.['validateURL']?.['invalidLink']}}
+        </div>
       </div>
     </mat-form-field>
     <mat-form-field>
