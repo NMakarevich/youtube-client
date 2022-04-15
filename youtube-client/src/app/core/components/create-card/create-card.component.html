@@ -1,29 +1,29 @@
 <div class='card'>
   <h2 class='card__title'>Create Card</h2>
   <form class='form' [formGroup]='formCard'>
-    <mat-form-field>
+    <mat-form-field appearance='outline'>
       <mat-label>Title</mat-label>
       <input class='form__field' matInput type='text' formControlName='title'>
       <div class='form__validation' *ngIf='title?.invalid && (title?.dirty || title?.touched)'>
-        <div *ngIf="title?.errors?.['required']">
+        <div *ngIf='title?.errors?.["required"]'>
           Please enter a title
         </div>
-        <div *ngIf="title?.errors?.['minLength']">
+        <div *ngIf='title?.errors?.["minlength"]'>
           The title is too short
         </div>
-        <div *ngIf="title?.errors?.['maxLength']">
+        <div *ngIf='title?.errors?.["maxlength"]'>
           The title is too long
         </div>
       </div>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance='outline'>
       <mat-label>Description</mat-label>
       <input class='form__field' matInput type='text' formControlName='description'>
       <div class='form__validation' *ngIf='description?.invalid && (description?.dirty || description?.touched)'>
         The description is too long
       </div>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance='outline'>
       <mat-label>Image</mat-label>
       <input class='form__field' matInput type='text' formControlName='img'>
       <div class='form__validation' *ngIf='img?.invalid && (img?.dirty || img?.touched)'>
@@ -31,22 +31,32 @@
           Please enter a link to the image
         </div>
         <div *ngIf="img?.errors?.['validateURL']">
-          {{img?.errors?.['validateURL']?.['invalidLink']}}
+          {{img?.errors?.['validateURL']}}
         </div>
       </div>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance='outline'>
       <mat-label>Video</mat-label>
       <input class='form__field' matInput type='text' formControlName='video'>
       <div class='form__validation' *ngIf='video?.invalid && (video?.dirty || video?.touched)'>
-        {{video?.errors?.["invalidLink"]}}
+        <div *ngIf="video?.errors?.['required']">
+          Please enter a link to the video
+        </div>
+        <div *ngIf="video?.errors?.['validateURL']">
+          {{video?.errors?.['validateURL']}}
+        </div>
       </div>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance='outline'>
       <mat-label>Date</mat-label>
       <input class='form__field' matInput type='date' formControlName='date'>
       <div class='form__validation' *ngIf='date?.invalid && (date?.dirty || date?.touched)'>
-        {{date?.errors?.["invalidDate"]}}
+        <div *ngIf="date?.errors?.['required']">
+          Please enter a creation date
+        </div>
+        <div *ngIf='date?.errors?.["validateDate"]'>
+          {{date?.errors?.["validateDate"]}}
+        </div>
       </div>
     </mat-form-field>
     <button class='form__submit' mat-raised-button color='primary' type='button' (click)='createCard()'>Create Card

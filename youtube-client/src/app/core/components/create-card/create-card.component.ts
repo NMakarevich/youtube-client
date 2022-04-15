@@ -25,15 +25,18 @@ export class CreateCardComponent implements OnInit {
     let isValid: boolean;
     try {
       new URL(control.value);
-    } catch (e) {}
-    isValid = true;
-    return isValid ? null : { invalidLink: 'The link is invalid' };
+      isValid = true;
+    } catch (e) {
+      isValid = false;
+    }
+    console.log(isValid);
+    return isValid ? null : { validateURL: 'The link is invalid' };
   }
 
   validateDate(control: AbstractControl) {
     const enteredDate = new Date(control.value);
     const now = new Date();
-    return now.getTime() > enteredDate.getTime() ? null : { invalidDate: 'The date is invalid' };
+    return now.getTime() > enteredDate.getTime() ? null : { validateDate: 'The date is invalid' };
   }
 
   get title() {

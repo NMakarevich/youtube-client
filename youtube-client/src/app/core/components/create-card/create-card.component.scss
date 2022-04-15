@@ -26,13 +26,32 @@ $bgColor: #F2F2F2;
     box-sizing: border-box;
     padding: 10px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    bottom: -38px;
+    background-color: #f44336;
+    color: white;
+    bottom: -50px;
     z-index: 10;
+
+    &::before {
+      position: absolute;
+      top: -10px;
+      left: 5px;
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border: 10px solid #f44336;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-top-width: 0;
+    }
   }
 
   &__submit {
     width: 124px;
     align-self: flex-end;
   }
+}
+
+.mat-form-field {
+  position: relative;
 }
