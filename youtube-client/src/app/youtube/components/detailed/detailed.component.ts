@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResponseItemById } from '../../../shared/models/response-item-by-id';
-import { map, Observable } from 'rxjs';
+import { concatAll, first, map, Observable } from 'rxjs';
 import { ApiService } from '../../../core/services/api.service';
 
 @Component({
@@ -10,15 +10,17 @@ import { ApiService } from '../../../core/services/api.service';
   styleUrls: ['./detailed.component.scss'],
 })
 export class DetailedComponent implements OnInit {
-  public result$!: Observable<ResponseItemById[]>;
+  public result$!: Observable<ResponseItemById>;
 
   constructor(private readonly router: Router, private readonly apiService: ApiService) {}
 
   ngOnInit() {
     const id = this.router.url.replace('/search/', '');
-    this.result$ = this.apiService
-      .getVideosById([id])
-      .pipe(map((response) => response.items)) as Observable<ResponseItemById[]>;
+    this.result$ = this.apiService.getVideosById([id]).pipe(
+      map((response) => response.items),
+      concatAll(),
+      first(),
+    ) as Observable<ResponseItemById>;
   }
 
   goBack() {

@@ -1,32 +1,32 @@
 <div class='container' *ngIf='result$ | async as result'>
-  <button class='button__back' type='button' appColorize [publishedDate]='result[0].snippet?.publishedAt'
+  <button class='button__back' type='button' appColorize [publishedDate]='result.snippet?.publishedAt'
           [style]='"background-color"' (click)='goBack()'>
     <mat-icon class='button__back-icon'>arrow_back_ios</mat-icon>
   </button>
   <mat-card>
-    <img mat-card-image [src]='result[0].snippet?.thumbnails?.high?.url' alt='thumbnail'>
-    <div class='info' appColorize [publishedDate]='result[0].snippet?.publishedAt'
+    <img mat-card-image [src]='result.snippet?.thumbnails?.high?.url' alt='thumbnail'>
+    <div class='info' appColorize [publishedDate]='result.snippet?.publishedAt'
          [style]='"border-color"'>
       <mat-card-header>
-        <mat-card-title>{{result[0].snippet?.title}}</mat-card-title>
-        <mat-card-subtitle>{{result[0].snippet?.publishedAt | date: "fullDate"}}</mat-card-subtitle>
+        <mat-card-title>{{result.snippet?.title}}</mat-card-title>
+        <mat-card-subtitle>{{result.snippet?.publishedAt | date: "fullDate"}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <h3>Description</h3>
-        <p>{{result[0].snippet?.description}}</p>
+        <p>{{result.snippet?.description}}</p>
       </mat-card-content>
       <ul class='description'>
         <li class='description__item'>
           <mat-icon class='description__icon'>visibility</mat-icon>
-          {{result[0].statistics!.viewCount}}
+          {{result.statistics?.viewCount}}
         </li>
         <li class='description__item'>
           <mat-icon class='description__icon'>favorite</mat-icon>
-          {{result[0].statistics!.likeCount}}
+          {{result.statistics?.likeCount}}
         </li>
-        <li class='description__item' *ngIf='result[0].statistics!.commentCount'>
+        <li class='description__item' *ngIf='result.statistics?.commentCount'>
           <mat-icon class='description__icon'>chat_bubble</mat-icon>
-          {{result[0].statistics!.commentCount}}
+          {{result.statistics?.commentCount}}
         </li>
       </ul>
     </div>
