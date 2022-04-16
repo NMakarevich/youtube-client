@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, map } from 'rxjs';
+import { startWith, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public isAuth$ = new BehaviorSubject<boolean>(false);
+  public isAuth$ = new Subject<boolean>();
 
-  constructor(private readonly router: Router) {
-    const auth = localStorage.getItem('authorization');
-    if (auth) this.isAuth$.next(true);
-  }
+  constructor(private readonly router: Router) {}
 
   getAuth() {
-    return this.isAuth$.pipe(map((isAuth) => ({ isAuth })));
+    const isAuth = JSON.parse(localStorage.getItem('authorization') as string);
+    return this.isAuth$.pipe(startWith(isAuth ?? false));
   }
 
   login() {

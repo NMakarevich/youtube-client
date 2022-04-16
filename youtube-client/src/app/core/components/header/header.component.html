@@ -14,13 +14,11 @@
     </button>
     <div class='login'>
       <span>{{ userName }}</span>
-      <div *ngIf='getAuth() | async as getAuth'>
-        <div class='login__avatar' *ngIf='!getAuth.isAuth'>
-          <mat-icon class='login__icon'>account_circle</mat-icon>
-        </div>
-        <div class='logout__button' (click)='logout()' *ngIf='getAuth.isAuth'>
-          <mat-icon class='login__icon'>exit_to_app</mat-icon>
-        </div>
+      <div class='login__avatar' *ngIf='(getAuth() | async) === false'>
+        <mat-icon class='login__icon'>account_circle</mat-icon>
+      </div>
+      <div class='logout__button' (click)='logout()' *ngIf='getAuth() | async'>
+        <mat-icon class='login__icon'>exit_to_app</mat-icon>
       </div>
     </div>
   </div>
