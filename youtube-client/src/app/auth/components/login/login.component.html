@@ -13,7 +13,7 @@
         </div>
       </div>
     </mat-form-field>
-    <mat-form-field appearance='outline'>
+    <mat-form-field appearance='outline' class='form__field'>
       <mat-label>Password</mat-label>
       <input class='form__password' matInput type='password' formControlName='password'>
       <div class='form__validation' *ngIf='password?.invalid && (password?.dirty || password?.touched)'>
@@ -22,6 +22,24 @@
         </div>
         <div *ngIf='password?.errors?.["passwordValidator"]'>
           {{password?.errors?.["passwordValidator"]}}
+          <ul class='form__validation-list'>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordLength"]'>done</mat-icon>
+              at least 8 characters
+            </li>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordLetters"]'>done</mat-icon>
+              a mixture of both uppercase and lowercase letters
+            </li>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordDigits"]'>done</mat-icon>
+              a mixture of letters and numbers
+            </li>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordChars"]'>done</mat-icon>
+              inclusion of at least one special character, e.g., ! @ # ?
+            </li>
+          </ul>
         </div>
       </div>
     </mat-form-field>

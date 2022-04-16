@@ -15,7 +15,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, this.passwordValidator]],
+      password: [
+        '',
+        [
+          Validators.required,
+          this.passwordValidator,
+          this.passwordDigits,
+          this.passwordLetters,
+          this.passwordChars,
+          this.passwordLength,
+        ],
+      ],
     });
   }
 
@@ -29,7 +39,41 @@ export class LoginComponent implements OnInit {
 
   passwordValidator(control: AbstractControl) {
     const regExp = /(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!@#$%^&*]{8,}/g;
-    return regExp.test(control.value) ? null : { passwordValidator: 'Password is invalid' };
+    return regExp.test(control.value)
+      ? null
+      : { passwordValidator: "Your password isn't strong enough. Password must contain:" };
+  }
+
+  passwordDigits(control: AbstractControl) {
+    return /[a-z]\d|\d[a-z]/gi.test(control.value)
+      ? null
+      : { passwordDigits: 'a mixture of letters and numbers' };
+  }
+
+  passwordLetters(control: AbstractControl) {
+    const hasLower = /[a-z]/g.test(control.value);
+    const hasUpper = /[A-Z]/g.test(control.value);
+    return hasLower && hasUpper
+      ? null
+      : {
+          passwordLetters: 'a mixture of both uppercase and lowercase letters',
+        };
+  }
+
+  passwordChars(control: AbstractControl) {
+    return /[!@#$%^&*]/g.test(control.value)
+      ? null
+      : {
+          passwordChars: 'inclusion of at least one special character, e.g., ! @ # ? ',
+        };
+  }
+
+  passwordLength(control: AbstractControl) {
+    return control.value.length >= 8
+      ? null
+      : {
+          passwordLength: 'at least 8 characters',
+        };
   }
 
   login() {
