@@ -8,7 +8,7 @@ export class ApiInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(
       request.clone({
-        url: `${environment.BASE_URL}/${request.url}&key=${environment.API_KEY}`,
+        url: `${environment.BASE_URL}/${request.url}`,
       }),
     );
   }
