@@ -10,5 +10,5 @@ export interface YoutubeResponse {
     totalResults: number;
     resultsPerPage: number;
   };
-  items: ResponseItem[] | ResponseItemById[];
+  items: (ResponseItem | ResponseItemById)[];
 }
