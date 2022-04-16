@@ -26,15 +26,6 @@ export interface ResponseItemById {
     };
     defaultAudioLanguage: string;
   };
-  contentDetails: {
-    duration: string;
-    dimension: string;
-    definition: string;
-    caption: string;
-    licensedContent: boolean;
-    contentRating: {};
-    projection: string;
-  };
   statistics: {
     viewCount: string;
     likeCount: string;
