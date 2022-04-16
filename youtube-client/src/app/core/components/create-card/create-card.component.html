@@ -30,7 +30,7 @@
         <div *ngIf="img?.errors?.['required']">
           Please enter a link to the image
         </div>
-        <div *ngIf="img?.errors?.['validateURL']">
+        <div *ngIf="img?.value && img?.errors?.['validateURL']">
           {{img?.errors?.['validateURL']}}
         </div>
       </div>
@@ -42,7 +42,7 @@
         <div *ngIf="video?.errors?.['required']">
           Please enter a link to the video
         </div>
-        <div *ngIf="video?.errors?.['validateURL']">
+        <div *ngIf="video?.value && video?.errors?.['validateURL']">
           {{video?.errors?.['validateURL']}}
         </div>
       </div>

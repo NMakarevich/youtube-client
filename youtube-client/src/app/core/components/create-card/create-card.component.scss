@@ -22,19 +22,21 @@ $bgColor: #F2F2F2;
 
   &__validation {
     position: absolute;
+    left: -12px;
+    margin-top: 25px;
     display: block;
     box-sizing: border-box;
     padding: 10px;
-    width: 100%;
+    width: 284px;
     background-color: #f44336;
     color: white;
-    bottom: -50px;
+    border-radius: 5px;
     z-index: 10;
 
     &::before {
       position: absolute;
       top: -10px;
-      left: 5px;
+      left: 10px;
       content: '';
       display: block;
       width: 0;
@@ -50,8 +52,4 @@ $bgColor: #F2F2F2;
     width: 124px;
     align-self: flex-end;
   }
-}
-
-.mat-form-field {
-  position: relative;
 }
