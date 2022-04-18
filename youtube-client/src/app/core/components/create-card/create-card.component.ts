@@ -29,7 +29,6 @@ export class CreateCardComponent implements OnInit {
     } catch (e) {
       isValid = false;
     }
-    console.log(isValid);
     return isValid ? null : { validateURL: 'The link is invalid' };
   }
 
