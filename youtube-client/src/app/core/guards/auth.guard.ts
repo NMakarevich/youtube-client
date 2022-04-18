@@ -1,14 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanLoad,
-  Route,
-  Router,
-  RouterStateSnapshot,
-  UrlSegment,
-  UrlTree,
-} from '@angular/router';
+import { CanActivate, CanLoad, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,21 +8,17 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate, CanLoad {
   constructor(private readonly router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!localStorage.getItem('authorization')) return this.router.parseUrl('/auth');
-    const isAutorized = JSON.parse(localStorage.getItem('authorization') as string);
-    return isAutorized || this.router.parseUrl('/auth');
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.checkAuth('/auth');
   }
 
-  canLoad(
-    route: Route,
-    segments: UrlSegment[],
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!localStorage.getItem('authorization')) return this.router.parseUrl('/404');
+  canLoad(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.checkAuth('/404');
+  }
+
+  checkAuth(redirectTo: string) {
+    if (!localStorage.getItem('authorization')) return this.router.parseUrl(redirectTo);
     const isAutorized = JSON.parse(localStorage.getItem('authorization') as string);
-    return isAutorized || this.router.parseUrl('/404');
+    return isAutorized || this.router.parseUrl(redirectTo);
   }
 }
