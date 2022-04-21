@@ -64,6 +64,7 @@ export class CreateCardComponent implements OnInit {
     if (this.formCard.invalid) return;
     const card = this.formCard.value;
     this.store.dispatch(createCard({ card }));
+    this.formCard.reset();
     console.log(this.store);
   }
 }
