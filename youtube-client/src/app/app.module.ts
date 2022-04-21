@@ -8,8 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './redux/reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { cardsReducer } from './redux/reducers/reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,9 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
-    StoreModule.forRoot(reducers, {
-      metaReducers,
-    }),
+    StoreModule.forRoot({ cards: cardsReducer }),
     EffectsModule.forRoot([]),
   ],
   bootstrap: [AppComponent],

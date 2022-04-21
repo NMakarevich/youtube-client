@@ -1,9 +1,9 @@
 import { CardModel } from '../shared/models/card.model';
-import { ResponseItem } from '../shared/models/response-item';
+import { ResponseItemById } from '../shared/models/response-item-by-id';
 
 export interface CardsState {
   cards: CardModel[];
-  videos: ResponseItem[];
+  videos: ResponseItemById[];
 }
 
 export const initialState: CardsState = {

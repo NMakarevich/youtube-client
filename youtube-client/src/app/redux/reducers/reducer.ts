@@ -1,8 +1,8 @@
 import * as Cards from '../actions/actions';
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { CardsState, initialState } from '../state.model';
 
-const reducer = createReducer(
+export const cardsReducer = createReducer(
   initialState,
   on(Cards.getCards, (state) => {
     console.log(state);
@@ -15,7 +15,3 @@ const reducer = createReducer(
     return { ...state, videos: [...state.videos, ...videos] };
   }),
 );
-
-export function cardReucer(state: CardsState, action: Action) {
-  return reducer(state, action);
-}
