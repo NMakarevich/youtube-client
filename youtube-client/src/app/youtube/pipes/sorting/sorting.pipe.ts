@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ResponseItem } from '../../../shared/models/response-item';
+import { ResponseItemById } from '../../../shared/models/response-item-by-id';
 
 @Pipe({
   name: 'sorting',
 })
 export class SortingPipe implements PipeTransform {
-  transform(results: ResponseItem[], sortTerm: string): ResponseItem[] {
+  transform(results: ResponseItemById[], sortTerm: string): ResponseItemById[] {
     if (!results || !results.length || !sortTerm) return results;
 
     const [sortCriteria, sortDirection] = sortTerm.split('-');

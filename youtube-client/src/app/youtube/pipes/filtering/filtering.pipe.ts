@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ResponseItem } from '../../../shared/models/response-item';
+import { ResponseItemById } from '../../../shared/models/response-item-by-id';
 
 @Pipe({
   name: 'filtering',
 })
 export class FilteringPipe implements PipeTransform {
-  transform(results: ResponseItem[], filterTerm: string): ResponseItem[] {
+  transform(results: ResponseItemById[], filterTerm: string): ResponseItemById[] {
     if (!results || !results.length || !filterTerm) return results;
 
     return results.filter((result) =>
