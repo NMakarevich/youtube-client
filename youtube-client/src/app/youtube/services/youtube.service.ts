@@ -24,8 +24,6 @@ export class YoutubeService {
 
   public id!: Array<string>;
 
-  public selectedResult?: ResponseItemById;
-
   public response$: ResponseItemById[] = [];
 
   toggleFilterState() {
