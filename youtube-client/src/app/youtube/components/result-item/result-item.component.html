@@ -3,19 +3,15 @@
   <ul class='description'>
     <li class='description__item'>
       <mat-icon class='description__icon'>visibility</mat-icon>
-      {{result?.statistics?.viewCount}}
+      {{result!.statistics!.viewCount}}
     </li>
     <li class='description__item'>
       <mat-icon class='description__icon'>favorite</mat-icon>
-      {{result?.statistics?.likeCount}}
+      {{result!.statistics!.viewCount}}
     </li>
-    <li class='description__item'>
-      <mat-icon class='description__icon dislike'>favorite</mat-icon>
-      {{result?.statistics?.dislikeCount}}
-    </li>
-    <li class='description__item'>
+    <li class='description__item' *ngIf='result!.statistics!.commentCount'>
       <mat-icon class='description__icon'>chat_bubble</mat-icon>
-      {{result?.statistics?.commentCount}}
+      {{result!.statistics!.commentCount}}
     </li>
   </ul>
   <mat-card-title>{{result?.snippet?.title}}</mat-card-title>

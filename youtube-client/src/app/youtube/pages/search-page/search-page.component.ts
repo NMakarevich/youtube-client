@@ -21,12 +21,8 @@ export class SearchPageComponent {
     return this.youtubeService.filterState;
   }
 
-  getSearchTerm() {
-    return this.youtubeService.searchTerm;
-  }
-
   getResponse() {
-    return this.youtubeService.response;
+    return this.youtubeService.response$;
   }
 
   getSortTerm() {

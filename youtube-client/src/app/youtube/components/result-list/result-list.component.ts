@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ResponseItem } from '../../../shared/models/response-item';
 import { YoutubeService } from '../../services/youtube.service';
+import { ResponseItemById } from '../../../shared/models/response-item-by-id';
 
 @Component({
   selector: 'app-result-list',
@@ -8,7 +8,7 @@ import { YoutubeService } from '../../services/youtube.service';
   styleUrls: ['./result-list.component.scss'],
 })
 export class ResultListComponent {
-  @Input() results: ResponseItem[] = [];
+  @Input() results$: ResponseItemById[] = [];
 
   @Input() searchTerm: string = '';
 

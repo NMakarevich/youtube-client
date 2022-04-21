@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ApiInterceptor } from '../core/interceptors/api.interceptor';
 
 const materialModules = [
   MatToolbarModule,
@@ -18,7 +20,8 @@ const materialModules = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ...materialModules],
+  imports: [CommonModule, HttpClientModule, ...materialModules],
   exports: [...materialModules],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
 })
 export class SharedModule {}

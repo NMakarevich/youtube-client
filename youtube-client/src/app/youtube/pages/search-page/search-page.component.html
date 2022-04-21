@@ -2,8 +2,7 @@
                     (filtering)='setFilterTerm($event)'
                     [filterState]='getFilterState()'
 ></app-search-filters>
-<app-result-list [searchTerm]='getSearchTerm()'
-                 [results]='getResponse()'
+<app-result-list [results$]='getResponse()'
                  [sortTerm]='getSortTerm()'
                  [filterTerm]='getFilterTerm()'
 ></app-result-list>
