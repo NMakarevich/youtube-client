@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { createCard } from '../../../redux/actions/actions';
 
 @Component({
   selector: 'app-create-card',
@@ -9,7 +11,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class CreateCardComponent implements OnInit {
   public formCard!: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(private readonly fb: FormBuilder, private readonly store: Store) {}
 
   ngOnInit(): void {
     this.formCard = this.fb.group({
@@ -60,5 +62,8 @@ export class CreateCardComponent implements OnInit {
 
   createCard() {
     if (this.formCard.invalid) return;
+    const card = this.formCard.value;
+    this.store.dispatch(createCard({ card }));
+    console.log(this.store);
   }
 }
