@@ -20,8 +20,17 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: '**',
+    path: 'admin',
+    loadChildren: () => import('./core/core.module').then((m) => m.CoreModule),
+    canLoad: [AuthGuard],
+  },
+  {
+    path: '404',
     component: NotFoundPageComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '404',
   },
 ];
 

@@ -1,6 +1,6 @@
 <mat-toolbar class='header'>
   <div class='container'>
-    <div class='logo'>
+    <div class='logo' routerLink=''>
       <mat-icon class='logo__icon'>play_arrow</mat-icon>
     </div>
     <div class='search'>
@@ -19,6 +19,9 @@
       </div>
       <div class='logout__button' (click)='logout()' *ngIf='getAuth() | async'>
         <mat-icon class='login__icon'>exit_to_app</mat-icon>
+      </div>
+      <div class='admin' routerLink='/admin'>
+        <mat-icon class='login__icon'>build</mat-icon>
       </div>
     </div>
   </div>

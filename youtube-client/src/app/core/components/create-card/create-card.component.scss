@@ -1,6 +1,6 @@
 $bgColor: #F2F2F2;
 
-.login {
+.card {
   display: flex;
   flex-direction: column;
   width: 324px;
@@ -19,11 +19,6 @@ $bgColor: #F2F2F2;
 .form {
   display: flex;
   flex-direction: column;
-
-  &__submit {
-    width: 124px;
-    align-self: flex-end;
-  }
 
   &__validation {
     position: absolute;
@@ -51,25 +46,10 @@ $bgColor: #F2F2F2;
       border-right-color: transparent;
       border-top-width: 0;
     }
+  }
 
-    &-list {
-      margin: 0;
-      padding: 10px 0 0 0;
-      list-style: none;
-
-      .list__item {
-        position: relative;
-        padding: 5px 0 5px 18px;
-        vertical-align: middle;
-      }
-
-      .mat-icon {
-        position: absolute;
-        left: 0;
-        width: 14px;
-        height: 14px;
-        font-size: 14px;
-      }
-    }
+  &__submit {
+    width: 124px;
+    align-self: flex-end;
   }
 }

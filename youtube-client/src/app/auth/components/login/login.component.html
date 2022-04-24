@@ -1,13 +1,47 @@
 <div class='login'>
   <h2 class='login__title'>Login</h2>
-  <form class='form'>
-    <mat-form-field>
+  <form class='form' [formGroup]='loginForm' (submit)='loginForm.valid && login()'>
+    <mat-form-field appearance='outline'>
       <mat-label>Login</mat-label>
-      <input class='form__login' matInput type='text' name='login-field'>
+      <input class='form__login' matInput type='email' formControlName='email' id='email'>
+      <div class='form__validation' *ngIf='email?.invalid && (email?.dirty || email?.touched)'>
+        <div *ngIf='email?.errors?.["required"]'>
+          Please enter a login email
+        </div>
+        <div *ngIf='email?.errors?.["email"]'>
+          The login email is invalid
+        </div>
+      </div>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance='outline' class='form__field'>
       <mat-label>Password</mat-label>
-      <input class='form__password' matInput type='password' name='password-field'>
+      <input class='form__password' matInput type='password' formControlName='password'>
+      <div class='form__validation' *ngIf='password?.invalid && (password?.dirty || password?.touched)'>
+        <div *ngIf='password?.errors?.["required"]'>
+          Please enter a password
+        </div>
+        <div *ngIf='password?.errors?.["passwordValidator"]'>
+          {{password?.errors?.["passwordValidator"]}}
+          <ul class='form__validation-list'>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordLength"]'>done</mat-icon>
+              at least 8 characters
+            </li>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordLetters"]'>done</mat-icon>
+              a mixture of both uppercase and lowercase letters
+            </li>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordDigits"]'>done</mat-icon>
+              a mixture of letters and numbers
+            </li>
+            <li class='list__item'>
+              <mat-icon *ngIf='!password?.errors?.["passwordChars"]'>done</mat-icon>
+              inclusion of at least one special character, e.g., ! @ # ?
+            </li>
+          </ul>
+        </div>
+      </div>
     </mat-form-field>
     <button class='form__submit' mat-raised-button color='primary' type='button' (click)='login()'>Login
     </button>
