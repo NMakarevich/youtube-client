@@ -6,10 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './redux/reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { cardsReducer } from './redux/reducers/reducer';
+import { AppEffects } from './redux/effects/app.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+//import { cardsReducer } from './redux/reducers/reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,11 +23,11 @@ import { cardsReducer } from './redux/reducers/reducer';
     SharedModule,
     FormsModule,
     CoreModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
     }),
-    StoreModule.forRoot({ cards: cardsReducer }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   bootstrap: [AppComponent],
 })

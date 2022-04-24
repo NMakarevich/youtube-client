@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { YoutubeService } from '../../services/youtube.service';
 import { ResponseItemById } from '../../../shared/models/response-item-by-id';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectVideos } from '../../../redux/selectors/selectors';
 
 @Component({
   selector: 'app-result-list',
@@ -17,5 +19,7 @@ export class ResultListComponent {
 
   @Input() filterTerm: string = '';
 
-  constructor(public youtubeService: YoutubeService) {}
+  constructor(public youtubeService: YoutubeService, private readonly store: Store) {}
+
+  public videos$ = this.store.select(selectVideos);
 }

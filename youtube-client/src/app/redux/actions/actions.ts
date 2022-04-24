@@ -6,6 +6,8 @@ export const createCard = createAction('[Admin] Create New Card', props<{ card: 
 
 export const getCards = createAction('[Admin] Get All Cards');
 
+export const addVideos = createAction('[Search] Add Searched Videos');
+
 export const setVideos = createAction(
   '[Search] Set Searched Videos',
   props<{ videos: ResponseItemById[] }>(),
