@@ -2,7 +2,6 @@
                     (filtering)='setFilterTerm($event)'
                     [filterState]='getFilterState()'
 ></app-search-filters>
-<app-result-list [results$]='getResponse()'
-                 [sortTerm]='getSortTerm()'
+<app-result-list [sortTerm]='getSortTerm()'
                  [filterTerm]='getFilterTerm()'
 ></app-result-list>
