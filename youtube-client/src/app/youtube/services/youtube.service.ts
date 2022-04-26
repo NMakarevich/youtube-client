@@ -3,7 +3,7 @@ import { ResponseItem } from '../../shared/models/response-item';
 import { Router } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
 import { ResponseItemById } from '../../shared/models/response-item-by-id';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +19,7 @@ export class YoutubeService {
 
   public id!: Array<string>;
 
-  public response$!: Observable<ResponseItemById[]>;
-
   toggleFilterState() {
-    if (!this.response$) return;
     this.filterState = !this.filterState;
   }
 
