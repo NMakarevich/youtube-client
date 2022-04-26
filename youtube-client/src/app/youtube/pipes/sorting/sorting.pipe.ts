@@ -10,7 +10,7 @@ export class SortingPipe implements PipeTransform {
 
     const [sortCriteria, sortDirection] = sortTerm.split('-');
 
-    return results.sort((a, b) => {
+    return [...results].sort((a, b) => {
       if (sortCriteria === 'date') {
         const aDate = new Date(a?.snippet?.publishedAt).getTime();
         const bDate = new Date(b?.snippet?.publishedAt).getTime();
