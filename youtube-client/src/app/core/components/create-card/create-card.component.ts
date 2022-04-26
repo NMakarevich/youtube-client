@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { createCard } from '../../../redux/actions/actions';
 
@@ -17,21 +24,27 @@ export class CreateCardComponent implements OnInit {
     this.formCard = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       description: ['', Validators.maxLength(255)],
-      img: ['', [Validators.required, this.validateURL]],
-      video: ['', [Validators.required, this.validateURL]],
+      img: ['', [Validators.required, this.validateURL(['png', 'jpg', 'jpeg'])]],
+      video: ['', [Validators.required, this.validateURL(['mp4', 'avi'])]],
       date: ['', [Validators.required, this.validateDate]],
     });
   }
 
-  validateURL(control: AbstractControl) {
-    let isValid: boolean;
-    try {
-      new URL(control.value);
-      isValid = true;
-    } catch (e) {
-      isValid = false;
-    }
-    return isValid ? null : { validateURL: 'The link is invalid' };
+  validateURL(formats: string[]): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      let isValid: boolean;
+      const formatMatch = formats
+        .map((format) => format == control.value.slice(-format.length))
+        .includes(true);
+      try {
+        new URL(control.value);
+        isValid = true;
+      } catch (e) {
+        console.error(e);
+        isValid = false;
+      }
+      return isValid && formatMatch ? null : { validateURL: 'The link is invalid' };
+    };
   }
 
   validateDate(control: AbstractControl) {
@@ -62,9 +75,7 @@ export class CreateCardComponent implements OnInit {
 
   createCard() {
     if (this.formCard.invalid) return;
-    const card = this.formCard.value;
-    this.store.dispatch(createCard({ card }));
+    this.store.dispatch(createCard({ card: this.formCard.value }));
     this.formCard.reset();
-    console.log(this.store);
   }
 }
