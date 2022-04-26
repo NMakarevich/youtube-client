@@ -1,35 +1,22 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
-import { debounceTime, filter, fromEvent, map } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
+import { Store } from '@ngrx/store';
+import { searchVideos } from '../../../redux/actions/actions';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent {
   public userName = 'User Name';
-
-  @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private readonly youtubeService: YoutubeService,
     private readonly authService: AuthService,
+    private readonly store: Store,
   ) {}
-
-  ngAfterViewInit() {
-    fromEvent(this.searchInput.nativeElement, 'input')
-      .pipe(
-        map((event: Event) => {
-          const target = event.target as HTMLInputElement;
-          return target.value;
-        }),
-        filter((text) => text.length > 3),
-        debounceTime(500),
-      )
-      .subscribe((val) => this.youtubeService.searchVideosId(val));
-  }
 
   toggleFilterState() {
     this.youtubeService.toggleFilterState();
@@ -41,5 +28,9 @@ export class HeaderComponent implements AfterViewInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  setSearchTerm($event: Event) {
+    this.store.dispatch(searchVideos({ event: $event }));
   }
 }
